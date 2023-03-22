@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shapes
 {
-    internal class Square : IShape//реализуем интерфейс
+    public class Square : IShape//реализуем интерфейс
     {
         private double _side;
 

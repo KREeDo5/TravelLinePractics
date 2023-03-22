@@ -17,38 +17,65 @@ namespace Shapes
                 if (name == "треугольник")
                 {
                     double a, b, c;
-                    Console.Write("Введите сторону A: ");
-                    a = Convert.ToInt32(Console.ReadLine());
-                    Console.Write("Введите сторону B: ");
-                    b = Convert.ToInt32(Console.ReadLine());
-                    Console.Write("Введите сторону C: ");
-                    c = Convert.ToInt32(Console.ReadLine());
-                    if ((a < (b + c)) && (b < (a + c)) && (c < (a + b)))
+                    try
                     {
-                        Triangle triangle = new Triangle(a, b, c); ;
-                        triangle.ShowAreaAndPerimeter();
+                        Console.Write("Введите сторону A: ");
+                        a = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Введите сторону B: ");
+                        b = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Введите сторону C: ");
+                        c = Convert.ToInt32(Console.ReadLine());
+                        if ((a < (b + c)) && (b < (a + c)) && (c < (a + b)))
+                        {
+                            Triangle triangle = new Triangle(a, b, c); ;
+                            triangle.ShowAreaAndPerimeter();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Такого треугольника не существует. Проверьте значения сторон.");
+                        }
                     }
-                    else
+                    catch (FormatException)
                     {
-                        Console.WriteLine("Такого треугольника не существует. Проверьте значения сторон.");
+                        Console.WriteLine("format exception");
                     }
                 }
                 else if (name == "круг")
                 {
                     double radius;
                     Console.Write("Введите радиус: ");
-                    radius = Convert.ToInt32(Console.ReadLine());
-                    Circle circle = new Circle(radius);
-                    circle.ShowAreaAndPerimeter();
+                    try
+                    {
+                        radius = Convert.ToInt32(Console.ReadLine());
+                        if (radius >= 0)
+                        {
+                            Circle circle = new Circle(radius);
+                            circle.ShowAreaAndPerimeter();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Ошибка: Вы ввели отрицательный радиус.");
+                        }
+                    } catch (FormatException)
+                    {
+                        Console.WriteLine("Format Exception");
+                    }
                 }
                 else if (name == "квадрат")
                 {
                     double side;
                     Console.Write("Введите сторону квадрата: ");
-                    side = Convert.ToInt32(Console.ReadLine());
-                    Square square = new Square(side);
-                    square.ShowAreaAndPerimeter();
-                }
+                    try
+                    {
+                        side = Convert.ToInt32(Console.ReadLine());
+                        Square square = new Square(side);
+                        square.ShowAreaAndPerimeter();
+
+                    } catch (FormatException)
+                    {
+                        Console.WriteLine("Format Exception");
+                    }
+                }                
             }
             else
             {
